@@ -1,0 +1,130 @@
+html, body, header, section, footer, div, ul, ol, li, img, a, span, em, del, legend, strong, var, fieldset, form, label, dl, dt, dd, cite, select, option, input, hr, time, mark, code, figcaption, figure, textarea, h1, h2, h3, h4, h5, h6, p, button {
+  font-size: 14px;
+  font-family:"SourceHanSansSC-Regular,SourceHanSansSC";
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: none;
+}
+html, body {
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+* {
+  box-sizing: border-box;
+}
+nav, article, aside, details, main, header, footer, section, fieldset, figcaption, figure {
+  display: block;
+}
+img, a, button, em, del, strong, var, label, cite, small, time, mark, code, textarea, output {
+  display: inline-block;
+}
+a:active, a:hover, a:focus {
+  outline: 0;
+  text-decoration: none;
+}
+a, a:visited {
+  text-decoration: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td, th {
+  padding: 0;
+}
+i, em, strong, u, s, b {
+  font-style: normal;
+  text-decoration: none;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+img {
+  vertical-align: bottom;
+  border-style: none;
+  user-select: none;
+}
+a, button, input, optgroup, select, textarea {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  appearance: button;
+  cursor: pointer;
+}
+button[disabled], html input[disabled] {
+  cursor: default;
+}
+input[type="checkbox"], input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+  height: auto;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input[type="search"] {
+  appearance: textfiled;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  appearance: none;
+}
+input:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px #fff inset;
+}
+
+.bscroll-vertical-scrollbar{
+  width: 5px !important;
+  visibility: hidden;
+  z-index: 999 !important;
+}
+.bscroll-indicator{
+  background: rgba(0, 0, 0, .3) !important;
+  border: 1px solid rgba(0, 0, 0, .3) !important;
+  border: none !important;
+  border-radius: 4px !important;
+  width: 5px !important;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar
+{
+  width: 6px;
+  height: 8px;
+  background-color: transparent;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track
+{
+    border-radius: 5px;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+    border-radius: 5px;
+    background:#D8D8D8;
+}
+/*定义滚动条 xy轴的交叉点*/
+::-webkit-scrollbar-corner
+{
+    background:#eee;
+}
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  background-color: #3B4145 !important;
+  background-image: none !important;
+  color: rgb(0, 0, 0) !important;
+  box-shadow: none;
+}

@@ -1,0 +1,133 @@
+
+.ant-modal {
+    width: 830px !important;
+    .ant-modal-body {
+        padding: 0 ;
+        .modal-container {
+            height: 500px;
+            display: flex;
+            .container-tree {
+                width: 400px;
+                border-right: 1px solid #E8E8E8;
+                height: 100%;
+                .tree-search {
+                    padding: 16px 11px 0 21px;
+                }
+                .tree-tabs {
+                    display: flex;
+                    align-items: center;
+                    border-bottom: 1px solid #dbe0e6;
+                    padding: 10px 0 0 20px;
+                    line-height: 36px;
+                    .tab-option {
+                      cursor: pointer;
+                      height: 35px;
+                      background-color: rgba(250, 250, 250, 1);
+                      color: rgba(96, 98, 102, 1);
+                      margin-right: 10px;
+                      border-radius: 4px 4px 0px 0px;
+                      padding: 0 20px;
+                      line-height: 35px;
+                      border: 1px solid rgba(232, 232, 232, 1);
+                      border-bottom: 1px solid #ffffff;
+                      &:hover {
+                        background: #ffffff;
+                        color: #036ed5;
+                        position: relative;
+                      }
+                    }
+                    .tab-active {
+                      background: #ffffff;
+                      color: #036ed5;
+                      position: relative;
+                      &::after {
+                        content: "";
+                        position: absolute;
+                        height: 2px;
+                        width: 100%;
+                        bottom: -2px;
+                        left: 0;
+                        background-color: #ffffff;
+                      }
+                    }
+                }
+                .tree-nodes {
+                    height: 404px;
+                    padding: 10px 0 0 0;
+                    overflow: auto;
+                    .ant-tree-checkbox-indeterminate .ant-tree-checkbox-inner {
+                        border: 1px solid #1890ff;
+                        &::after {
+                            height: 2px;
+                        }
+                    }
+                    .tree-node-custom {
+                        display: flex;
+                        align-items: center;
+                    }
+                    .member-icon {
+                        width: 30px;
+                        margin-right: 10px;
+                    }
+                    .dept-icon {
+                        margin-right: 10px;
+                    }
+                    .post-icon {
+                        margin-right: 10px;
+                    }
+                    .node-name {
+                        margin: 0;
+                        word-break: keep-all;
+                    }
+                }
+
+            }
+            .container-checked {
+                flex: 1;
+                padding: 6px 0 0 21px;
+                .checked-tip {
+                    color: rgba(144, 147, 153, 1);
+                }
+                .checked-options {
+                    height: calc(100% - 27px);
+                    overflow-y: auto;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: flex-start;
+                    align-content: flex-start;
+                    .checked-option {
+                        .option-member {
+                            height: 32px;
+                            background: rgba(232, 236, 239, 1);
+                            border-radius: 4px;
+                            margin-right: 13px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            padding: 0 7px 0 10px;
+                            margin-top: 14px;
+                            color: rgba(74, 90, 107, 1);
+                            .option-member-name {
+                                color: rgba(48, 49, 51, 1);
+                                margin: 0;
+                            }
+                            .opiton-member-close {
+                                margin-left: 8px;
+                                cursor: pointer;
+                                font-size: 24px;
+                                height: 16px;
+                                width: 16px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                transform: rotate(45deg);
+                                color: #B9C5D2;
+                                margin-bottom: 3px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
