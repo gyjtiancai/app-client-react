@@ -2,13 +2,8 @@ import interceptors from "./interceptors"
 
 function get(url, params) {
     const headers = new Headers()
-    let appToken = window.sessionStorage.getItem('appToken')
-    if (appToken) {
-        appToken = JSON.parse(appToken)
-        headers.append("Authorization", `${appToken.token_type} ${appToken.access_token}`)
-    }
-
-    let newUrl = `${process.env.REACT_APP_MAIN_HOST}${url}`
+    // let newUrl = `${process.env.REACT_APP_MAIN_HOST}${url}`
+    let newUrl = `/api${url}`
     if (params && Object.keys(params).length) {
         newUrl = `${newUrl}?`
         for (let key in params) {
@@ -33,13 +28,8 @@ function get(url, params) {
 
 function post(url, params = {}) {
     const headers = new Headers({ "Content-Type": "application/json" })
-    let appToken = window.sessionStorage.getItem('appToken')
-    if (appToken) {
-        appToken = JSON.parse(appToken)
-        headers.append("Authorization", `${appToken.token_type} ${appToken.access_token}`)
-    }
-
-    let newUrl = `${process.env.REACT_APP_MAIN_HOST}${url}`
+    // let newUrl = `${process.env.REACT_APP_MAIN_HOST}${url}`
+    let newUrl = `/api${url}`
     return new Promise(async (resolve, reject) => {
         try {
             const res = await fetch(newUrl, {
