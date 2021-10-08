@@ -1,11 +1,10 @@
 import './App.less';
-import Header from "./components/Header/index.jsx"
+import Header from "./components/header/index.jsx"
 import { Router } from 'react-router-dom';
 import { createHashHistory } from 'history'
 import Routes from './router';
 import { Provider } from 'react-redux'
 import store from './store'
-
 function App() {
   return (
     <Provider store={store}>

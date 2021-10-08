@@ -1,42 +1,71 @@
 import React from 'react';
 import './index.less';
-import { GetNotesList } from "@/request/api";
+import { GetNotes, CollectNotes } from "@/request/api";
+import { LikeOutlined } from '@ant-design/icons';
+import { message, Spin } from 'antd';
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            notes:[]
+            notes: [],
+            isShowLoading: false,
         }
     }
-    componentDidMount(){
+    componentDidMount() {
         this.getNotesList()
     }
-    getNotesList = async ()=>{
-        console.log('执行')
-        const res = await GetNotesList()
+    getNotesList = async () => {
+        const res = await GetNotes()
         console.log(res)
-        this.setState(()=>{
+        this.setState(() => {
             return {
-                notes:res.data
+                notes: res.data,
             }
-        })        
+        })
+    }
+    async likeNote() {
+        this.setState(() => {
+            return {
+                isShowLoading: true
+            }
+        })
+        await CollectNotes()
+        setTimeout(() => {
+            this.setState(() => {
+                return {
+                    isShowLoading: false
+                }
+            })
+            message.success('点赞成功');
+        }, 1000)
     }
     render() {
-        const {notes} = this.state
+        const { notes, isShowLoading } = this.state
         return (
-            <div className="home-container">
-                <div className="notes-list">
-                    <h3>个人笔记</h3>
-                    <ul>
-                        {notes.map((note) =>
-                            (<li key={note.id}>{note.title}</li>)
-                        )}
-                        
-                    </ul>
+            <div className="app-home">
+                <Spin tip="Loading..." spinning={isShowLoading} className={`loading ${isShowLoading ? '' : 'is-hide'}`}>
+
+                </Spin>
+                <div className="app-home-tools">
+                    <input className="tools-search" type="text" maxLength="20" placeholder="搜索" />
                 </div>
-                <div className="notes-types">
-                    <h3>笔记分类</h3>
+                <div className="app-home-notes">
+                    <div className="notes-container">
+                        {notes.map((note) => {
+                            return (<div className="note-option" key={note.id}>
+                                <img className="note-option-image" src={note.image} alt="" />
+                                <div className="note-option-introduction">
+                                    <p className="introduction-title">{note.title}<LikeOutlined className="good-icon" onClick={() => this.likeNote()} /></p>
+                                    <div className="introduction-description">{note.description}</div>
+                                </div>
+
+                            </div>)
+                        }
+
+                        )}
+                    </div>
+
                 </div>
             </div>
         )

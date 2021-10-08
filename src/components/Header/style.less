@@ -1,8 +1,35 @@
 .app-header {
-    height: 62px;
-    background: #02173d;
-    position: relative;
-    line-height: 62px;
-    text-align: center;
-    color: #ffffff;
+    border-bottom: 1px solid #eaecef;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .app-header-title {
+        display: flex;
+        align-items: center;
+        .title-icon {
+            width: 36px;
+            margin-right: 10px;
+        }
+        .title-label {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+    }
+    .app-header-directory {
+        display: flex;
+        align-items: center;
+        .is-active {
+            border-bottom: 2px solid #53a1c7 !important;
+        }
+        .nav-item {
+            cursor: pointer;
+            border-bottom: 2px solid #ffffff;
+            margin-left: 20px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+    }
 }

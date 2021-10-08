@@ -1,3 +1,3 @@
-import { GetNotesList } from './home'
+import { GetNotes,CollectNotes } from './home'
 
-export { GetNotesList }
+export { GetNotes,CollectNotes }
