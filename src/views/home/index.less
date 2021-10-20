@@ -32,9 +32,10 @@
         }
     }
     .app-home-notes {
-        height: calc(100% - 160px);
+        height: calc(100% - 160px - 50px);
         display: flex;
         overflow-y: auto;
+        position: relative;
         .notes-container {
             width: 800px;
             margin: 0 auto;
@@ -81,5 +82,11 @@
             }
         }
     }
-
+    .app-home-pagination {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        width: 800px;
+        margin: 0 auto;
+    }
 }

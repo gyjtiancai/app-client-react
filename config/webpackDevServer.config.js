@@ -103,8 +103,7 @@ module.exports = function (proxy, allowedHost) {
     // `proxy` is run between `before` and `after` `webpack-dev-server` hooks
     proxy: {
       "/api": {
-        target: "http://172.20.10.2:8081",  //本地服务器
-        // target: "http://101.200.151.161:8080",  //云服务器
+        target: "http://www.geyujie.cn",  //云服务器
         changeOrigin: true,
         pathRewrite: {
           "^/api": "/"

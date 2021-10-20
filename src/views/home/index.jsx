@@ -2,8 +2,8 @@ import React from 'react';
 import './index.less';
 import { GetNotes, CollectNotes } from "@/request/api";
 import { LikeOutlined } from '@ant-design/icons';
-import { message, Spin } from 'antd';
-
+import { message, Spin, Pagination } from 'antd';
+import Calendar from './calendar.jsx'
 class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -30,7 +30,9 @@ class Home extends React.Component {
                 isShowLoading: true
             }
         })
-        await CollectNotes()
+        await CollectNotes({
+            id:1
+        })
         setTimeout(() => {
             this.setState(() => {
                 return {
@@ -51,6 +53,7 @@ class Home extends React.Component {
                     <input className="tools-search" type="text" maxLength="20" placeholder="搜索" />
                 </div>
                 <div className="app-home-notes">
+                    <Calendar></Calendar>
                     <div className="notes-container">
                         {notes.map((note) => {
                             return (<div className="note-option" key={note.id}>
@@ -59,13 +62,12 @@ class Home extends React.Component {
                                     <p className="introduction-title">{note.title}<LikeOutlined className="good-icon" onClick={() => this.likeNote()} /></p>
                                     <div className="introduction-description">{note.description}</div>
                                 </div>
-
                             </div>)
-                        }
-
-                        )}
+                        })}
                     </div>
-
+                </div>
+                <div className="app-home-pagination">
+                    <Pagination defaultCurrent={1} total={50} />
                 </div>
             </div>
         )
