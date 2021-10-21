@@ -3,7 +3,7 @@ import store from '@/store'
 import { connect } from 'react-redux'
 import { sleep } from '@/utils'
 import { Button } from 'antd'
-import './index.less';
+import './style.less';
 async function set() {
     await sleep(1000)
     store.dispatch({

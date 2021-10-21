@@ -49,9 +49,9 @@ class Home extends React.Component {
                 <Spin tip="Loading..." spinning={isShowLoading} className={`loading ${isShowLoading ? '' : 'is-hide'}`}>
 
                 </Spin>
-                <div className="app-home-tools">
+                {/* <div className="app-home-tools">
                     <input className="tools-search" type="text" maxLength="20" placeholder="搜索" />
-                </div>
+                </div> */}
                 <div className="app-home-notes">
                     <Calendar></Calendar>
                     <div className="notes-container">

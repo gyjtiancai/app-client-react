@@ -40,50 +40,45 @@
         constructor(x, y) {
           this.x = x;  //x坐标
           this.y = y;  //y坐标
-          this.r = 80 //半径
+          this.r = 10 //半径
           this.circles = [];
         }
-        //绘制球
         draw() {
           const x = Math.random() * this.x;
           const y = Math.random() * this.y;
-          const r = this.r;
+          const r = Math.random() * this.r;
           const color = `rgba(${Math.random() * 256},${Math.random() * 256},${Math.random() * 256},${Math.random()})`;
-          this.circles.push({ x: x, y: y, r: r, color: color, isAddX: true, isAddY: true });
+          this.circles.push({ x: x, y: y, r: r, color: color });
           ctx.beginPath();
           ctx.arc(x, y, r, 0, 2 * Math.PI)
           ctx.closePath();
           ctx.fillStyle = color;
           ctx.fill();
         }
-        //球移动规则
+        moveTop(circle, speed) {
+          circle.y = circle.y + speed
+        }
+        moveBottom(circle, speed) {
+          circle.y = circle.y - speed
+        }
+        moveLeft(circle, speed) {
+          circle.x = circle.x - speed
+        }
+        moveRight(circle, speed) {
+          circle.x = circle.x + speed
+        }
+        //抖动
         move(speed) {
           this.circles.forEach(circle => {
-            if (circle.isAddX) {
-              if (circle.x < Width - this.r) {
-                circle.x = circle.x + speed
-              } else {
-                circle.isAddX = false
-              }
+            let random = Math.random()
+            if (random >= 0 && random < 0.25) {
+              this.moveTop(circle, speed)
+            } else if (random >= 0.25 && random < 0.5) {
+              this.moveBottom(circle, speed)
+            } else if (random >= 0.5 && random < 0.75) {
+              this.moveLeft(circle, speed)
             } else {
-              if (circle.x > 0 + this.r) {
-                circle.x = circle.x - speed
-              } else {
-                circle.isAddX = true
-              }
-            }
-            if (circle.isAddY) {
-              if (circle.y < Height - this.r) {
-                circle.y = circle.y + speed
-              } else {
-                circle.isAddY = false
-              }
-            } else {
-              if (circle.y > 0 + this.r) {
-                circle.y = circle.y - speed
-              } else {
-                circle.isAddY = true
-              }
+              this.moveRight(circle, speed)
             }
             ctx.beginPath();
             ctx.arc(circle.x, circle.y, circle.r, 0, 2 * Math.PI)
@@ -92,19 +87,21 @@
             ctx.fill();
           })
         }
-        //绘制指定个数的球
-        init(count) {
-          for (let i = 0; i < count; i++) {
+        init() {
+          for (let i = 0; i < 300; i++) {
             this.draw()
           }
         }
       }
       const particles = new RandomParticles(Width, Height)
-      particles.init(8)
+      particles.init()
+      // setInterval(() => {
+      //   ctx.clearRect(0, 0, Width, Height); //清空所有的内容
+      //   particles.move(1)
+      // }, 100)
       function anmite() {
-        //清空画布
-        ctx.clearRect(0, 0, Width, Height);
-        particles.move(1)
+        ctx.clearRect(0, 0, Width, Height); //清空所有的内容
+        particles.move(0.25)
         requestAnimationFrame(anmite)
       }
       anmite()

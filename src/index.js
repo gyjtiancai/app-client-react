@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
 import 'antd/dist/antd.css';
-console.log('process.env', process.env)
+// console.log('process.env', process.env)
 ReactDOM.render(
   // <React.StrictMode>
   <ConfigProvider locale={zhCN}>
