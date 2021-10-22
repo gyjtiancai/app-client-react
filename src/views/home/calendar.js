@@ -26,7 +26,7 @@ class Calendar {
     //获取指定年月的日历数据
     getCalendarData(year, month) {
         const days = this.getMonthDays(year, month)
-        const weekDay = this.getWeekDayOfMonthFirstDay(year, month)
+        const weekDay = this.getWeekDayOfMonthFirstDay(year, month) === 0 ? 7 : this.getWeekDayOfMonthFirstDay(year, month)
         const CalendarData = new Array(6).fill(0).map(v => [0, 0, 0, 0, 0, 0, 0])
         // console.log(CalendarData)
         const fillCount_row_1 = 7 - weekDay + 1

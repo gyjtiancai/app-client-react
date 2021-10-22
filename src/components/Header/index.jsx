@@ -8,6 +8,7 @@ const { Option } = Select;
 // by hooks
 function Header(props) {
     const [activeNav, setNav] = useState(0);
+    console.log(activeNav)
     const [currentLanguage, setCurrentLanguage] = useState('CN');
     //hook副作用（目前理解为watch）
     useEffect(() => {
@@ -35,7 +36,7 @@ function Header(props) {
         </Link>
         <div className="app-header-directory">
             <Link to="/home">
-                <div className={`nav-item ${activeNav === 0 ? 'is-active' : ''}`} onClick={() => changeNav(0)}>{currentLanguage === 'CN' ? '主页' : 'Home'}</div>
+                <div className="nav-item" onClick={() => changeNav(0)}>{currentLanguage === 'CN' ? '主页' : 'Home'}</div>
             </Link>
             <div className="nav-item">
                 <Select value={currentLanguage} style={{ width: 100 }} onChange={selectChange}>

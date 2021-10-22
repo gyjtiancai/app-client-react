@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import './calendar.less'
 import { Select } from 'antd';
 import CalendarJs from './calendar.js';
@@ -17,6 +18,8 @@ class Calendar extends React.Component {
             month: 10,
             currentCalendarDate: []
         }
+        this.changeYear = this.changeYear.bind(this);
+        this.changeMonth = this.changeMonth.bind(this);
     }
     componentDidMount() {
         this.getCalendarData()
@@ -29,44 +32,43 @@ class Calendar extends React.Component {
         })
     }
     changeYear(year) {
-        console.log(`selected ${year}`);
         this.setState((state) => {
             return {
                 year: year,
-                // currentCalendarDate: CalendarJs.getCalendarData(year, state.month),
             }
         })
+        this.getCalendarData()
     }
     changeMonth(month) {
-        console.log(`selected ${month}`);
         this.setState((state) => {
             return {
                 month: month,
-                currentCalendarDate: CalendarJs.getCalendarData(state.year, month),
             }
         })
+        this.getCalendarData()
     }
     render() {
+        const { currentLanguage } = this.props
         const { year, month, currentCalendarDate } = this.state
         return (
             <div className="calendar">
                 <div className="calendar-header">
                     <Select value={year} style={{ width: 100 }} onChange={this.changeYear}>
-                        {years.map(year => <Option value={year} key={year}>{year}年</Option>)}
+                        {years.map(y => <Option value={y} key={y}>{y}{currentLanguage === 'CN' ? '年' : ''}</Option>)}
                     </Select>
                     <Select value={month} style={{ width: 80 }} onChange={this.changeMonth}>
-                        {months.map(month => <Option value={month} key={month}>{month}月</Option>)}
+                        {months.map(m => <Option value={m} key={m}>{m}{currentLanguage === 'CN' ? '月' : ''}</Option>)}
                     </Select>
                 </div>
                 <div className="calendar-table">
                     <div className="calendar-table-header">
-                        <div className="header-cell">一</div>
-                        <div className="header-cell">二</div>
-                        <div className="header-cell">三</div>
-                        <div className="header-cell">四</div>
-                        <div className="header-cell">五</div>
-                        <div className="header-cell">六</div>
-                        <div className="header-cell">日</div>
+                        <div className="header-cell">{currentLanguage === 'CN' ? '一' : 'Mon'}</div>
+                        <div className="header-cell">{currentLanguage === 'CN' ? '二' : 'Tue'}</div>
+                        <div className="header-cell">{currentLanguage === 'CN' ? '三' : 'Wed'}</div>
+                        <div className="header-cell">{currentLanguage === 'CN' ? '四' : 'Thu'}</div>
+                        <div className="header-cell">{currentLanguage === 'CN' ? '五' : 'Fri'}</div>
+                        <div className="header-cell">{currentLanguage === 'CN' ? '六' : 'Sat'}</div>
+                        <div className="header-cell">{currentLanguage === 'CN' ? '日' : 'Sun'}</div>
                     </div>
                     <div className="calendar-table-body">
                         {currentCalendarDate.map((d, index) => <div className="calendar-table-row" key={index}>
@@ -78,4 +80,13 @@ class Calendar extends React.Component {
         )
     }
 }
-export default Calendar
+function mapStateToProps(state) {
+    return {
+        currentLanguage: state.common.currentLanguage
+    }
+}
+
+export default connect(
+    mapStateToProps,
+)(Calendar)
+// export default Calendar
